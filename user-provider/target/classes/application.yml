@@ -7,7 +7,7 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: none
-  #数据源
+  #数据�?
   datasource:
     platform: h2
     schema: classpath:schema.sql
