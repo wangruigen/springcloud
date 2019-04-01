@@ -1,6 +1,14 @@
 spring:
   application:
     name: microservice-discovery-eureka-ha
+
+#用户密码认证
+security:
+  basic:
+    enabled: true
+  user:
+    name: admin
+    password: admin
 ---
 
 spring:
@@ -17,8 +25,8 @@ eureka:
     register-with-eureka: true #是否将自己注册到eureka server,由于当前应用就是eureka server ha,所以注册。默认true
     fetch-registry: true #是否从其他eureka server获取注册信息，默认为true。
     service-url:
-      #将peer1注册到peer2这个eureka server
-      defaultZone: http://peer2:8762/eureka/
+      #将peer1注册到peer2这个eureka server,如果有用户密码认证，url需配置username:userpassword@
+      defaultZone: http://admin:admin@peer2:8762/eureka/
 
 ---
 spring:
@@ -30,5 +38,5 @@ eureka:
     hostname: peer2
   client:
     service-url:
-      #将peer2注册到peer1这个eureka server
-      defaultZone:  http://peer1:8761/eureka/
+      #将peer2注册到peer1这个eureka server,如果有用户密码认证，url需配置username:userpassword@
+      defaultZone:  http://admin:admin@peer1:8761/eureka/
