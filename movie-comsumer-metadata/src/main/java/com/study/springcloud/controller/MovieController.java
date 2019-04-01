@@ -27,7 +27,7 @@ public class MovieController {
 
     @GetMapping("/user/{id}")
     public User getUserById(@PathVariable String id){
-        ResponseEntity<User> response = restTemplate.getForEntity("http://localhost:8088/user-provider/user/"+id, User.class);
+        ResponseEntity<User> response = restTemplate.getForEntity("http://localhost:9000/user-provider/user/"+id, User.class);
         return response.getBody();
     }
 
