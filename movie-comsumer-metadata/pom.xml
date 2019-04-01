@@ -11,7 +11,7 @@
     <groupId>com.study.springcloud</groupId>
     <artifactId>movie-comsumer-metadata</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>movie-comsumer</name>
+    <name>movie-comsumer-metadata</name>
     <description>电影微服务-服务消费者-元数据配置</description>
 
     <properties>
