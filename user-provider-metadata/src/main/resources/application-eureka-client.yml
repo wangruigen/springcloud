@@ -15,3 +15,6 @@ eureka:
       defaultZone: http://admin:admin@peer1:8761/eureka,http://admin:admin@peer2:8762/eureka
   instance:
     prefer-ip-address: true #将自己ip注册到eureka server,默认false,如果false,表示将系统所在的hostname注册到eureka server
+    #自定义元数据
+    metadata-map:
+      my-metadata: 自定义的元数据
