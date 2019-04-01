@@ -14,6 +14,9 @@ eureka:
   client:
     service-url:
       #将应用注册到注册中心，配置注册中心地址
-      defaultZone: http://peer1:8761/eureka
+      #这里的url服务端客户端和配置中心的单词必须完全一样
+      #这里的url服务端客户端和配置中心的单词必须完全一样
+      #这里的url服务端客户端和配置中心的单词必须完全一样
+      defaultZone: http://localhost:8761/eureka
   instance:
     prefer-ip-address: true #将自己ip注册到eureka server,默认false,如果false,表示将系统所在的hostname注册到eureka server
