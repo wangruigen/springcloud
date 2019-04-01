@@ -23,6 +23,8 @@ logging:
 management:
   security:
     enabled: false
+
+#配置application info
 info:
   app:
     name: @project.artifactId@
