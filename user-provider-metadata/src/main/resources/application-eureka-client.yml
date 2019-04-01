@@ -2,7 +2,7 @@
 
 spring:
   application:
-    name: user-provider #注册到eureka server上的应用名，我这里使用的是artifactId
+    name: @project.artifactId@ #注册到eureka server上的应用名，我这里使用的是artifactId
   cloud:
     service-registry:
       auto-registration:
