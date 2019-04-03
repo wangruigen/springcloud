@@ -1,26 +1,27 @@
 package com.study.springcloud.controller;
 
 import com.study.springcloud.entity.User;
+import com.study.springcloud.feignclient.UserFeignClient;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 @RestController
 public class MovieController {
-
-    private final RestTemplate restTemplate;
+    /**
+     * MovieController 通过注入UserFeignCLient的方式调用http api
+     */
+    private final UserFeignClient userFeignClient;
 
     @Autowired
-    public MovieController(RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
+    public MovieController(UserFeignClient userFeignClient) {
+        this.userFeignClient = userFeignClient;
     }
 
     @GetMapping("/user/{id}")
-    public User getUserById(@PathVariable String id){
-        ResponseEntity<User> response = restTemplate.getForEntity("http://localhost:8088/user-provider/user/"+id, User.class);
-        return response.getBody();
+    public User getUserById(@PathVariable String id) {
+
+        return userFeignClient.findById(id);
     }
 }
