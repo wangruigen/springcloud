@@ -27,10 +27,23 @@ eureka:
 #               NFLoadBalancerPingClassName:配置IPing的实现类
 #               NIWSServerListClassName: 配置ServerList的实现类
 #               NIWSServerListFilterClassName: 配置ServerListFilter的实现类
-#下面是配置实例为user-provider-metadata实例的ribbon负债均衡策略为随机选择实例
+#下面是配置实例为user-provider-metadata实例的ribbon负载均衡策略为随机选择实例
 user-provider-metadata:
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+    #配置请求列表，可以从listOfServers的列表中选择user-provider-metadata的请求。不配置的话所有的user-provider-metadata实例根据负载均衡策略进行请求
+    NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+  listOfServers: localhost:9001,localhost:9000 #user-provider-metadata实例只会从这里选择服务列表
+
+#配置多个ribbon client负载均衡策略
+user-provider-metadata1:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+user-provider-metadata2:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
 
 #对所有的ribbonClient实例使用RandomRule
 #ribbon:
