@@ -19,7 +19,7 @@ eureka:
     prefer-ip-address: true #将自己ip注册到eureka server,默认false,如果false,表示将系统所在的hostname注册到eureka server
 
 
-###==============================使用属性自定义ribbon配置
+###==============================使用属性自定义ribbon配置,配置文件配置的方式优先级高于代码编程配置的方式
 #格式：RibbonClientName.ribbon.NF*className: classNameImpl (ribbon客户端名称.ribbon.NF*className: NF*classNameImpl)
 #RibbonClientName:配置在eureka server的实例，serviceId,若不配置，则对全局client instance有效。
 #NF*className： NFLoadBalancerCLassName:配置ILoadBalancer的实现类
