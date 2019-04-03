@@ -48,3 +48,7 @@ user-provider-metadata2:
 #对所有的ribbonClient实例使用RandomRule
 #ribbon:
 #  NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+ribbon:
+  eager-load:
+    clients: user-provider-metadata,user-provider-metadata2 #饥饿加载的ribbon client
+    enabled: true #饥饿加载 默认是false(懒加载，只有在被使用时才执行初始化操作)
