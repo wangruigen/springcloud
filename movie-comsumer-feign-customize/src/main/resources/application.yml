@@ -18,7 +18,44 @@ eureka:
   instance:
     prefer-ip-address: true #将自己ip注册到eureka server,默认false,如果false,表示将系统所在的hostname注册到eureka server
 
+
+#使用配置文件配置指定名称的feign client#=========
 feign:
   client:
-    config:
-      feignName:
+    config: # Map<String, FeignClientConfiguration> config = new HashMap<>(); 配置项就是构建key value
+      #对feign client name=user-provider的服务进行配置
+      user-provider:
+        #private Logger.Level loggerLevel;
+        loggerLevel: full #日志级别
+        #private Integer connectTimeout;
+        connectTimeout: 5000 #连接超时时间 java.net.HttpURLConnection#getConnectTimeout()，如果使用Hystrix，该配置无效
+        #private Integer readTimeout;
+        readTimeout: 5000 #读取超时时间  java.net.HttpURLConnection#getReadTimeout()，如果使用Hystrix，该配置无效
+        #private Class<Retryer> retryer;
+        retryer:  #重试接口实现类，默认实现 feign.Retryer.Default
+        #private Class<ErrorDecoder> errorDecoder;
+        errorDecoder: #feign的错误解码器
+        #private List<Class<RequestInterceptor>> requestInterceptors;
+        requestInterceptors: #配置拦截器
+        #private Boolean decode404;
+        decode404: #是否开启404编码
+
+#feign:
+#  client:
+#    config: # Map<String, FeignClientConfiguration> config = new HashMap<>(); 配置项就是构建key value
+      #对全局的deign client的服务进行配置
+#      default:
+        #private Logger.Level loggerLevel;
+#        loggerLevel: full #日志级别
+        #private Integer connectTimeout;
+#        connectTimeout: 5000 #连接超时时间 java.net.HttpURLConnection#getConnectTimeout()，如果使用Hystrix，该配置无效
+        #private Integer readTimeout;
+#        readTimeout: 5000 #读取超时时间  java.net.HttpURLConnection#getReadTimeout()，如果使用Hystrix，该配置无效
+        #private Class<Retryer> retryer;
+#        retryer:  #重试接口实现类，默认实现 feign.Retryer.Default
+        #private Class<ErrorDecoder> errorDecoder;
+#        errorDecoder: #feign的错误解码器
+        #private List<Class<RequestInterceptor>> requestInterceptors;
+#        requestInterceptors: #配置拦截器
+        #private Boolean decode404;
+#       decode404: #是否开启404编码
