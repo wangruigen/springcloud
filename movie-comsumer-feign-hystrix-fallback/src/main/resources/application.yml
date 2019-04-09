@@ -1,0 +1,19 @@
+### 服务提供者向eureka server注册的配置
+server:
+  port: 8089
+  context-path: /@project.artifactId@
+
+spring:
+  application:
+    name: @project.artifactId@ #注册到eureka server上的应用名，我这里使用的是artifactId
+  cloud:
+    service-registry:
+      auto-registration:
+        enabled: true  #将服务注册到注册中心 默认是true
+eureka:
+  client:
+    service-url:
+      #将应用注册到注册中心，配置注册中心地址（也可以配置一个，注册中心会同步节点，最好是配置两个，避免极端情况，节点同步不了）
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true #将自己ip注册到eureka server,默认false,如果false,表示将系统所在的hostname注册到eureka server
