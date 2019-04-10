@@ -1,7 +1,6 @@
 ### 服务提供者向eureka server注册的配置
 server:
   port: 8089
-  context-path: /movie-consumer-ribbon
 spring:
   application:
     name: @project.artifactId@ #注册到eureka server上的应用名，我这里使用的是artifactId
