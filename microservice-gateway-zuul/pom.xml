@@ -10,7 +10,11 @@
         <version>1.5.19.RELEASE</version>
         <relativePath/>
     </parent>
-    
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
     <groupId>com.study.springcloud</groupId>
     <artifactId>microservice-gateway-zuul</artifactId>
     <version>1.0-SNAPSHOT</version>
