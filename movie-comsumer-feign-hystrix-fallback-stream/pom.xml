@@ -5,14 +5,18 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.10.RELEASE</version>
+        <version>1.5.19.RELEASE</version>
         <relativePath/>
     </parent>
     <groupId>com.study.springcloud</groupId>
-    <artifactId>movie-comsumer-ribbon</artifactId>
+    <artifactId>movie-comsumer-feign-hystrix-fallback-stream</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>movie-comsumer-ribbon</name>
-    <description>电影微服务-服务消费者-整合ribbon、hystrix断路器@EnableCircuitBreaker</description>
+    <name>${artifactId}</name>
+    <description>
+        电影微服务-服务消费者-使用feign调用http api,
+        feign整合hystrix,实现feign回退,
+        启动类添加@EnableCircuitBreaker注解或@EnableHystrix(默认开启熔断支持)，可以使用/hystrix.stream监控此服务
+    </description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -45,11 +49,12 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
-        <!--ribbon 因为<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>包含ribbon，这里可不写依赖-->
-        <!-- <dependency>
+
+        <!--引入feign依赖-->
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
-        </dependency>-->
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
 
         <!--hystrix-->
         <dependency>
