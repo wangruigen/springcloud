@@ -12,12 +12,9 @@ public class MovieController {
     /**
      * MovieController 通过注入UserFeignCLient的方式调用http api
      */
-    private final UserFeignClient userFeignClient;
-
     @Autowired
-    public MovieController(UserFeignClient userFeignClient) {
-        this.userFeignClient = userFeignClient;
-    }
+    private UserFeignClient userFeignClient;
+
 
     @GetMapping("/user/{id}")
     public User getUserById(@PathVariable String id) {
