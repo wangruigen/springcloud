@@ -15,7 +15,6 @@ public class MovieController {
     @Autowired
     private UserFeignClient userFeignClient;
 
-
     @GetMapping("/user/{id}")
     public User getUserById(@PathVariable String id) {
 

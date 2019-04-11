@@ -2,9 +2,12 @@ package com.study.springcloud.feignclient;
 
 import com.study.springcloud.entity.User;
 import org.springframework.cloud.netflix.feign.FeignClient;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.math.BigDecimal;
 
 /**
  * user-provider 微服务提供者的feign客户端。
@@ -20,4 +23,17 @@ public interface UserFeignClient {
     @RequestMapping(value = "/user/{id}",method = RequestMethod.GET)
     User findById(@PathVariable(value = "id") String id);
 
+}
+@Component
+class FeignClientFallBack implements UserFeignClient {
+    @Override
+    public User findById(String id) {
+        User user = new User();
+        user.setId(10000L);
+        user.setUsername("default_username");
+        user.setName("defalut_name");
+        user.setAge(0);
+        user.setBalance(new BigDecimal(0));
+        return user;
+    }
 }
