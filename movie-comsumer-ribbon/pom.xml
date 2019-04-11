@@ -12,7 +12,7 @@
     <artifactId>movie-comsumer-ribbon</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>movie-comsumer-ribbon</name>
-    <description>电影微服务-服务消费者-整合ribbon</description>
+    <description>电影微服务-服务消费者-整合ribbon、hystrix断路器@EnableCircuitBreaker</description>
 
     <properties>
         <java.version>1.8</java.version>
