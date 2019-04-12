@@ -10,7 +10,7 @@ eureka:
     prefer-ip-address: true
   client:
     service-url:
-      defaultZone: http://localhost:8761:/eureka/
+      defaultZone: http://localhost:8761/eureka/
 
 #turbine配置聚合多个服务应用的监控
 turbine:
