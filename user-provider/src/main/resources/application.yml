@@ -1,6 +1,5 @@
 server:
   port: 8088
-  context-path: /user-provider
 spring:
   jpa:
     generate-ddl: false
