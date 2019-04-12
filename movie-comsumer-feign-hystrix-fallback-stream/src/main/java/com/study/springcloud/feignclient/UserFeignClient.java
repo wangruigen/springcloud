@@ -17,7 +17,7 @@ import java.math.BigDecimal;
 配置注解FeignClient，指定eureka server列表中的服务，这里是用户提供者服务实例名.path表示的是应用名，可理解成tomcat root path
    里面还有很多参数，简单讲url,url指定服务端地址，这里配合eureka使用，自动从eureka获取服务，可以不写。
  */
-@FeignClient(name = "user-provider",path = "/user-provider",fallback = FeignClientFallBack.class)
+@FeignClient(name = "user-provider",fallback = FeignClientFallBack.class)
 public interface UserFeignClient {
 
     @RequestMapping(value = "/user/{id}",method = RequestMethod.GET)
