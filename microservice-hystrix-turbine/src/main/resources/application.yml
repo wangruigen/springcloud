@@ -12,7 +12,8 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka/
 
-#turbineÅäÖÃ¾ÛºÏ¶à¸ö·şÎñÓ¦ÓÃµÄ¼à¿Ø
+#turbineç›‘æ§å¤šä¸ªå¾®æœåŠ¡
 turbine:
-  #ÅäÖÃ¼à¿ØµÄ¶à¸öeureka server
+  #å¤šä¸ªeureka serverç”¨é€—å·éš”å¼€
   app-config: movie-comsumer-feign-hystrix-fallback-stream,movie-comsumer-ribbon
+  cluster-name-expression: "'default'"
