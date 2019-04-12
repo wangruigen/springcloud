@@ -31,7 +31,7 @@ public class MovieController {
     @HystrixCommand(fallbackMethod = "getUserByIdFallBack")
     @GetMapping("/user/{id}")
     public User getUserById(@PathVariable String id) {
-        String url = "http://user-provider/user-provider/user/" + id;
+        String url = "http://user-provider/user/" + id;
         ResponseEntity<User> response = restTemplate.getForEntity(url, User.class);
         return response.getBody();
     }
