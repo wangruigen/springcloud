@@ -30,7 +30,7 @@
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
-        <!--actuator依赖配合zuul开启端点routes和filtes-->
+        <!--actuator依赖配合zuul开启端点routes和filtes，netflix-zuul已包含actuator下面依赖可以不写-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
