@@ -13,7 +13,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>${artifactId}</name>
     <description>
-        hystrix可视化监控-单个微服务实例监控-->监控：movie-comsumer-feign-hystrix-fallback/hystrix.stream
+        hystrix可视化监控hystrix.stream
     </description>
 
     <properties>
