@@ -39,6 +39,7 @@
             <scope>test</scope>
         </dependency>
 
+        <!--turbine-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-turbine</artifactId>
