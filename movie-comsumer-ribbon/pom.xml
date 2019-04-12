@@ -12,7 +12,7 @@
     <artifactId>movie-comsumer-ribbon</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>movie-comsumer-ribbon</name>
-    <description>电影微服务-服务消费者-整合ribbon、hystrix断路器@EnableCircuitBreaker</description>
+    <description>电影微服务-服务消费者-整合ribbon、hystrix断路器@EnableCircuitBreaker(hystrix.stream)</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -73,6 +73,7 @@
 
 
     <build>
+        <finalName>movie-comsumer-ribbon(hystrix-stream)</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

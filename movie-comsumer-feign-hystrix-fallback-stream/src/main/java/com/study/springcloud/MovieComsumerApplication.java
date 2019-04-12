@@ -7,7 +7,7 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 
 @SpringBootApplication
-@EnableHystrix
+@EnableCircuitBreaker
 @EnableFeignClients //开启feignClient
 public class MovieComsumerApplication {
 

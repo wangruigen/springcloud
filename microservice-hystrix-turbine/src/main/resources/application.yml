@@ -1,0 +1,19 @@
+server:
+  port: 8031
+
+spring:
+  application:
+    name: @project.artifactId@
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+#turbine监控多个微服务
+turbine:
+  #多个eureka server用逗号隔开
+  app-config: movie-comsumer-feign-hystrix-fallback-stream,movie-comsumer-ribbon
+  cluster-name-expression: "'default'"
