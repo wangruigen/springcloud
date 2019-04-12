@@ -1,0 +1,18 @@
+server:
+  port: 8031
+
+spring:
+  application:
+    name: @project.artifactId@
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8761:/eureka/
+
+#turbine配置聚合多个服务应用的监控
+turbine:
+  #配置监控的多个eureka server
+  app-config:
