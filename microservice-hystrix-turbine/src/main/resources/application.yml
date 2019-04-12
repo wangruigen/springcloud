@@ -15,4 +15,4 @@ eureka:
 #turbine配置聚合多个服务应用的监控
 turbine:
   #配置监控的多个eureka server
-  app-config:
+  app-config: movie-comsumer-feign-hystrix-fallback-stream,movie-comsumer-ribbon
