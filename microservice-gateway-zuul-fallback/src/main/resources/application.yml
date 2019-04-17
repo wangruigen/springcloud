@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: microservice-gateway-zuul
+    name: microservice-gateway-zuul-fallback
 
 eureka:
   client:
@@ -15,6 +15,11 @@ management:
   security:
     enabled: false
 
+#zuul整合ribbon实现负载均衡，而ribbon默认是懒加载的，可能会导致首次请求较慢的问题，开启饥饿加载
+zuul:
+  ribbon:
+    eager-load:
+      enable: true
 ---
 spring:
   profiles: route1
