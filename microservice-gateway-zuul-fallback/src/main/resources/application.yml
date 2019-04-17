@@ -1,0 +1,117 @@
+server:
+  port: 8040
+
+spring:
+  application:
+    name: microservice-gateway-zuul
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+management:
+  security:
+    enabled: false
+
+---
+spring:
+  profiles: route1
+#===================================对指定的微服务进行 路由配置 begin ===================================
+zuul:
+  routes: #这里是一个map（key=serviceId,value=zuulRoute）
+    user-provider: /micro_user/** #表示符合host:port/micro_user/**的访问都会被映射到微服务user-provider上
+    movie-comsumer-ribbon: /micro_movie/**
+  #忽略微服务，serviceId1,serviceId2,serviceId3。使用'*'可忽略掉所有服务
+  ignored-services: movie-comsumer-metedata,user-provider-metedata
+#===================================对指定的微服务进行 路由配置 end ===================================
+
+
+
+---
+spring:
+  profiles: route2
+#===================================指定servideId,指定path的路由配置 begin ===================================
+zuul:
+  routes: #这里是一个map（key=serviceId,value=zuulRoute）
+    user-route:
+      service_id: user-provider
+      path: /micro_user/** #表示符合host:port/micro_user/**的访问都会被映射到微服务user-provider上
+    movie-route:
+      service_id:  movie-comsumer-ribbon
+      path: /micro_movie/**
+  #配置效果和route1一样
+  #忽略微服务，serviceId1,serviceId2,serviceId3。使用'*'可忽略掉所有服务
+  ignored-services: movie-comsumer-metedata,user-provider-metedata
+#===================================指定servideId,指定path的路由配置 end ===================================
+
+---
+spring:
+  profiles: route3
+#===================================指定的url,指定path的路由配置 begin ===================================
+zuul:
+  routes: #这里是一个map（key=serviceId,value=zuulRoute）
+    user-route:
+      url: http://localhost:8088/
+      path: /micro_user/** #表示符合host:port/micro_user/**的访问都会被映射到微服务http://localhost:8088/上
+    movie-route:
+      url:  http://localhost:8089/
+      path: /micro_movie/**
+  #配置效果只是对url进行转发,直接转发到了http://localhost:8088/上，没有经过ribbon或者hystrix，也就没有ribbon和hystrix的功能
+  #忽略微服务，serviceId1,serviceId2,serviceId3。使用'*'可忽略掉所有服务
+  ignored-services: movie-comsumer-metedata,user-provider-metedata
+#===================================指定的url,指定path的路由配置 end ===================================
+
+---
+spring:
+  profiles: route4
+#===================================指定的url,指定path的路由配置，并且不破坏ribbon和hystrix的功能 begin ===================================
+zuul:
+  routes: #这里是一个map（key=serviceId,value=zuulRoute）
+    user-route:
+      service_id: user-provider
+      path: /micro_user/** #表示符合host:port/micro_user/**的访问都会被映射到微服务user-provider上
+    movie-route:
+      service_id:  movie-comsumer-ribbon
+      path: /micro_movie/**
+
+  #忽略微服务，serviceId1,serviceId2,serviceId3。使用'*'可忽略掉所有服务
+  ignored-services: movie-comsumer-metedata,user-provider-metedata
+
+ribbon:
+  eureka:
+    enabled: false #为ribbon禁用eureka(因为是直接访问rest api)
+
+user-provider:
+  ribbon:
+    listOfServers: http://localhost:8088/,http://localhost:7088/
+
+movie-comsumer-ribbon:
+  ribbon:
+    listOfServers: http://localhost:8089/,http://localhost:7089/
+#===================================指定的url,指定path的路由配置，并且不破坏ribbon和hystrix的功能 end ===================================
+
+---
+spring:
+  profiles: route5
+#===================================zuul路由前缀配置 begin ===================================
+zuul:
+  prefix: /micro_user
+  strip-prefix: true #转发之前是否去掉前缀，默认是true
+  routes:
+    user-provider: /user/**
+  #配置表示的是访问zuul的/micro_user/user-provider/xx,请求会被转发到user-provider的/xx
+#===================================zuul路由前缀配置  end ===================================
+
+---
+spring:
+  profiles: route6
+#===================================zuul路由前缀配置2 begin ===================================
+zuul:
+  routes:
+    user-provider:
+      path: /userx/**
+      strip-prefix: true #转发之前是否去掉前缀，默认是true
+  #配置表示的是访问zuul的/userx/xx,请求会被转发到user-provider的/xx
+#===================================zuul路由前缀配置2 end ===================================

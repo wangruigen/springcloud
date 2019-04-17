@@ -19,7 +19,7 @@ management:
 ---
 spring:
   profiles: ratelimit1
-
+  redis
 #配置默认服务限流策略(配置表示启用限流策略，并且所有服务在3秒内只能有1次请求且所有请求总和不能超过2秒)
 zuul:
   ratelimit:
