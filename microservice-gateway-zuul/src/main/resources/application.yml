@@ -111,7 +111,7 @@ spring:
 zuul:
   routes:
     user-provider:
-      path: /user/**
-      strip-prefix: false #转发之前是否去掉前缀，默认是true
-  #配置表示的是访问zuul的/xx,请求会被转发到user-provider的/xx
+      path: /userx/**
+      strip-prefix: true #转发之前是否去掉前缀，默认是true
+  #配置表示的是访问zuul的/userx/xx,请求会被转发到user-provider的/xx
 #===================================zuul路由前缀配置2 end ===================================
