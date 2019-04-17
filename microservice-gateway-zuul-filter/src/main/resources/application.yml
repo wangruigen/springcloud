@@ -15,3 +15,55 @@ eureka:
 management:
   security:
     enabled: false
+
+---
+spring:
+  profiles: ratelimit1
+
+#配置默认服务限流策略(配置表示启用限流策略，并且所有服务在3秒内只能有1次请求且所有请求总和不能超过2秒)
+zuul:
+  ratelimit:
+    enabled: true #启用限流
+    default-policy:
+      limit: 1
+      quota: 2
+      refresh-interval: 3
+
+---
+spring:
+  profiles: ratelimit2
+
+#为指定服务单独配置限流策略
+zuul:
+  ratelimit:
+    enabled: true
+    default-policy:
+      limit: 1
+      quota: 1
+      refresh-interval: 3
+    policies:
+      #为user-provider服务单独配置限流（包含了微服务里的所有url,是粗粒度的限流），60秒内访问次数不超过10次，且访问时间不超过50秒
+      user-provider:
+        limit: 10
+        quota: 50
+        refresh-interval: 60
+
+---
+spring:
+  profiles: ratelimit3
+
+#为指定的url单独配置限流策略
+zuul:
+  ratelimit:
+    enabled: true
+    default-policy:
+      limit: 1
+      quota: 1
+      refresh-interval: 3
+    policies:
+      #user-provider服务的url配置限流,注意这里的粒度精确到了服务的url,是细粒度的限流，60秒内访问次数不超过10次，且访问时间不超过50秒
+      user-provider:
+        limit: 10
+        quota: 50
+        refresh-interval: 60
+        type: url

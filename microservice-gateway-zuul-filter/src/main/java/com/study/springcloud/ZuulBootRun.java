@@ -1,9 +1,11 @@
 package com.study.springcloud;
 
+import com.study.springcloud.filter.CustomizeZuulFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.cloud.netflix.zuul.EnableZuulServer;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 /**
@@ -38,10 +40,18 @@ import org.springframework.cloud.netflix.zuul.EnableZuulServer;
  *      内置的重试机制。
  *  2.2 {@link org.springframework.cloud.netflix.zuul.filters.route.SimpleHostRoutingFilter},该过滤器通过Apache HttpClient向指定的URL发送
  *  请求，URL在RequestContext.getRouteHost()中。
+ *
+ * 主要的{@link com.netflix.zuul.context.RequestContext} ，初始化及执行filter过程参考{@link com.netflix.zuul.http.ZuulServlet}
+ *
  */
 @EnableZuulProxy
 public class ZuulBootRun {
     public static void main(String[] args) {
         SpringApplication.run(ZuulBootRun.class, args);
+    }
+
+    @Bean
+    public CustomizeZuulFilter preRequestLog(){
+        return new CustomizeZuulFilter();
     }
 }

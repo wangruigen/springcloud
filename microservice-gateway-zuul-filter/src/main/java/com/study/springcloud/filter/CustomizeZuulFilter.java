@@ -1,7 +1,12 @@
 package com.study.springcloud.filter;
 
 import com.netflix.zuul.ZuulFilter;
+import com.netflix.zuul.context.RequestContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 继承 {@link ZuulFilter} 实现自己的ZuulFilter
@@ -16,6 +21,7 @@ import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
  */
 public class CustomizeZuulFilter extends ZuulFilter {
 
+    private static Logger log = LoggerFactory.getLogger(CustomizeZuulFilter.class);
 
     @Override
     public String filterType() {
@@ -40,9 +46,16 @@ public class CustomizeZuulFilter extends ZuulFilter {
         return true;
     }
 
+    /**
+     * 过滤器执行逻辑
+     * @return
+     */
     @Override
     public Object run() {
-
+        RequestContext ctx = RequestContext.getCurrentContext();
+        HttpServletRequest request = ctx.getRequest();
+        log.info("RemoteHost:{},RemotePort:{}",request.getRemoteHost(),request.getRemotePort());
+        log.info(String.format("send %s request to %s",request.getMethod(),request.getRequestURL().toString()));
         return null;
     }
 }
