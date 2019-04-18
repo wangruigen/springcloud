@@ -1,0 +1,3 @@
+app:
+  profile: prod
+  version: 1.0
