@@ -28,6 +28,10 @@ eureka:
 #               NIWSServerListClassName: 配置ServerList的实现类
 #               NIWSServerListFilterClassName: 配置ServerListFilter的实现类
 #下面是配置实例为user-provider-metadata实例的ribbon负载均衡策略为随机选择实例
+---
+spring:
+  profiles: properties1
+  #单个微服务配置
 user-provider-metadata:
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
@@ -35,6 +39,9 @@ user-provider-metadata:
     NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
   listOfServers: localhost:9001,localhost:9000 #user-provider-metadata实例只会从这里选择服务列表
 
+---
+spring:
+  profiles: properties2
 #配置多个ribbon client负载均衡策略
 user-provider-metadata1:
   ribbon:
@@ -45,6 +52,9 @@ user-provider-metadata2:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
 
 
+---
+spring:
+  profiles: properties3
 #对所有的ribbonClient实例使用RandomRule
 #ribbon:
 #  NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
@@ -52,3 +62,4 @@ ribbon:
   eager-load:
     clients: user-provider-metadata,user-provider-metadata2 #饥饿加载的ribbon client
     enabled: true #饥饿加载 默认是false(懒加载，只有在被使用时才执行初始化操作)
+
