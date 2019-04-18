@@ -7,7 +7,15 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/wangruigen/config-repository
+          uri: git@github.com:wangruigen/config-repository.git
           username: 1028725142@qq.com
-          password: xxxxxxx
+          password: wrgwrg541032...
 
+
+#http请求地址和资源文件映射如下:
+  * /{application}/{profile}[/{label}]
+  * /{application}-{profile}.yml
+  * /{label}/{application}-{profile}.yml
+  * /{application}-{profile}.properties
+  * /{label}/{application}-{profile}.properties
+#

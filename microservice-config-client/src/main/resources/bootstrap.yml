@@ -1,0 +1,4 @@
+spring:
+  application:
+    #对应config server所获取的配置文件的{applicatoin}
+    name:
