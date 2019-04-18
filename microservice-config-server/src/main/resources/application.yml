@@ -9,5 +9,5 @@ spring:
         git:
           uri: https://github.com/wangruigen/springcloud/tree/master/config-repository
           username: 1028725142@qq.com
-          password: wrg541032
+          password: xxxxxx
 
