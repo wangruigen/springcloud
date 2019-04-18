@@ -32,7 +32,6 @@ zuul:
 ---
 spring:
   profiles: ratelimit2
-
 #为指定服务单独配置限流策略
 zuul:
   ratelimit:
