@@ -1,5 +1,5 @@
 # springcloud技术栈
-> 感谢此书《Spring Cloud与Docker微服务架构实战》（第二版）及作者
+> 感谢此书《Spring Cloud与Docker微服务架构实战》（第二版）和作者，获益匪浅。
 ## 1.[eureka-service-descovery](https://github.com/wangruigen/springcloud/tree/master/eureka-service-descovery)
     eureka服务中心
     
