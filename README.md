@@ -217,5 +217,11 @@ class FeignClientFallBack implements UserFeignClient {
     
 ## 20.[microservice-gateway-zuul-fallback](https://github.com/wangruigen/springcloud/tree/master/microservice-gateway-zuul-fallback)
     微服务网关zuul-zuul的容错与回退
+
+## 21.[config-repository](https://github.com/wangruigen/springcloud/tree/master/config-repository)
+    springcloud config server 配置
+
+## 22.[microservice-config-server](https://github.com/wangruigen/springcloud/tree/master/microservice-config-server)
+    spring cloud config-server
     
 # 更新中。。。。。。
