@@ -1,0 +1,11 @@
+server:
+  port: 8761
+eureka:
+  client:
+    register-with-eureka: false #是否将自己注册到eureka server,由于当前应用就是eureka server,所以false,不注册。默认true
+    fetch-registry: false #是否从其他eureka server获取注册信息，默认为true。由于这是一个单点的eureka server,不需要同步其他的eureka server节点的数据，故为false
+    service-url:
+      #这里的url服务端客户端和配置中心的单词必须完全一样
+      #这里的url服务端客户端和配置中心的单词必须完全一样
+      #这里的url服务端客户端和配置中心的单词必须完全一样
+      defaultZone: http://127.0.0.1:8761/eureka
