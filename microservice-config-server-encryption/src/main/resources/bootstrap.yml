@@ -1,0 +1,3 @@
+#加密配置需放在bootstrap.yml配置文件中，否则无效
+encrypt:
+  key: foo #对称加密秘钥

@@ -1,5 +1,5 @@
 server:
-  port: 8180
+  port: 8280
 spring:
   application:
     name: @project.artifactId@
@@ -23,10 +23,4 @@ spring:
 #  * /{label}/{application}-{profile}.yml
 #  * /{application}-{profile}.properties
 #  * /{label}/{application}-{profile}.properties
-
 #
-
-
-
-encrypt:
-  key: foo #对称加密秘钥
