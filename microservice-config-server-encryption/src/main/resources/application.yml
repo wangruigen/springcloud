@@ -1,0 +1,27 @@
+server:
+  port: 8180
+spring:
+  application:
+    name: @project.artifactId@
+  cloud:
+    config:
+      server:
+        git:
+          uri: git@github.com:wangruigen/config-repository.git
+          username: 1028725142@qq.com
+          password: xx
+          #如果有子目录，也搜索子目录查找配置文件
+          search-paths: foo,bar*
+          #全局配置应用启动时clone git 仓库
+          clone-on-start: true
+          #全局配置应用启动时clone git仓库为true时，超时时间设置长点，默认是5s
+          timeout: 60
+
+
+#http请求地址和资源文件映射如下:
+#  * /{application}/{profile}[/{label}]
+#  * /{application}-{profile}.yml
+#  * /{label}/{application}-{profile}.yml
+#  * /{application}-{profile}.properties
+#  * /{label}/{application}-{profile}.properties
+#
