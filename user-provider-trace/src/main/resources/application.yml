@@ -1,0 +1,35 @@
+server:
+  port: 8088
+spring:
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  #数据源
+  datasource:
+    platform: h2
+    schema: classpath:schema.sql
+    data: classpath:data.sql
+  profiles:
+    include: eureka-client
+logging:
+  level:
+    root: info
+    org.hibernate: info
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
+    org.hibernate.type.descriptor.sql.BasicExtractor: trace
+    #为了查看sleuth设置DispatcherServlet日志输出debug
+    org.springframework.web.servlet.DispatcherServlet: debug
+    org.springframework.cloud.sleuth: debug
+management:
+  security:
+    enabled: false
+info:
+  app:
+    name: @project.artifactId@
+    encodeing: @project.build.sourceEncoding@
+    java:
+      source: @java.version@
+      target: @java.version@
+
